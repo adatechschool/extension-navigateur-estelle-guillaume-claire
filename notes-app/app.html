@@ -12,9 +12,23 @@
 
     <div id="allNotes"></div>
 
-    <button class="newNoteBtn">+</button>
+    <form id="newNoteForm">
+        <label for="title">Title:</label><br>
+        <input id="title" style="width:200px"><br>
+        <div id="tags">
+            <input type="checkbox" id="tag1" class="tag" value="Personal">
+            <label for="tag1">Personal</label>
+            <input type="checkbox" id="tag2" class="tag" value="Work">
+            <label for="tag2">Work</label>
+            <input type="checkbox" id="tag3" class="tag" value="Other">
+            <label for="tag3">Other</label>
+         </div>
+        <label for="note">Note:</label><br>
+        <textarea id="note" style="width:200px; height:200px"></textarea><br><br>
+        <input type="submit" id="submit" value="Submit">
+    </form>
 
-    <div id="newNoteForm"></div>
+    <button class="newNoteBtn">+</button>
 
     <script src="app.js"></script>
 </body>

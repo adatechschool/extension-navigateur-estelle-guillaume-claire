@@ -1,47 +1,84 @@
-const allNotes = []
+const allNotes = [
+    {
+        "title": "coucou tout le monde",
+        "note": "we are the best group ever ! <3",
+        "created": "Today",
+        "tags": ["Personal"]
+    }
+]
+
+const newNoteForm = document.querySelector("#newNoteForm")
+newNoteForm.style.display = 'none'
+
+const allNotesList = document.querySelector("#allNotes")
+
+let title = document.querySelector("#title").value
+let note = document.querySelector("#note").value
+let tags = []
+let checkedTags = document.querySelectorAll(".tag")
 
 const dayOfYear = date =>
   Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
 
 const newNote = () => {
-    const newNoteForm = document.querySelector("#newNoteForm")
-    newNoteForm.innerHTML =
-        `
-        <label for="title">Title:</label><br>
-        <input id="title" style="width:200px"><br><br>
-        <label for="note">Note:</label><br>
-        <textarea id="note" style="width:200px; height:200px"></textarea><br><br>
-        <button id="submit">Submit</button>
-    `
+    newNoteForm.style.display = 'inherit'
+    document.querySelector("#title").value = ''
+    document.querySelector("#note").value = ''
+    tags = []
 
-    const form = document.querySelector("#submit")
-    form.addEventListener("click", (e) => {
-        const title = document.querySelector("#title").value
-        const note = document.querySelector("#note").value
-        let timestamp = new Date()
-            if (dayOfYear(timestamp) == dayOfYear(new Date())) {
-                timestamp = "Today " + timestamp.toLocaleTimeString()
-            } else {
-                timestamp = timestamp.toLocaleDateString()
-            }
+    for (let tag of checkedTags) {
+        tag.checked = false
+    }
 
-        allNotes.push({ "title": title, "note": note, "created": timestamp })
-        displayNotes()
-        newNoteForm.innerHTML = ""
-    })
+    allNotesList.style.display = 'none'
 }
+
+newNoteForm.addEventListener("submit", (e) => {
+    e.preventDefault()
+    title = document.querySelector("#title").value
+    note = document.querySelector("#note").value
+
+    for (let tag of checkedTags) {
+        if (tag.checked) {
+            tags.push(tag.value)
+        }
+    }
+
+    let timestamp = new Date()
+        if (dayOfYear(timestamp) == dayOfYear(new Date())) {
+            timestamp = "Today " + timestamp.toLocaleTimeString()
+        } else {
+            timestamp = timestamp.toLocaleDateString()
+        }
+
+    allNotes.push({ "title": title, "note": note, "created": timestamp, "tags": tags })
+    displayNotes()
+    newNoteForm.style.display = 'none'
+})
 
 const newNoteBtn = document.querySelector(".newNoteBtn")
 newNoteBtn.addEventListener("click", newNote)
 
 const displayNotes = () => {
-    const allNotesList = document.querySelector("#allNotes")
     allNotesList.innerHTML = ''
 
     for (let i = 0; i < allNotes.length; i++) {
+        const tagsArr = []
+        for (let j = 0 ; j < allNotes[i].tags.length ; j++) {
+            tagsArr.push(allNotes[i].tags[j])
+        }
+
         allNotesList.innerHTML += `
-    <div>Title : ${allNotes[i].title} Note: ${allNotes[i].note} Created: ${allNotes[i].created}</div>
+    <div class="listItem">
+        <h2>${allNotes[i].title}</h2>
+        <div class="tagsList">${tagsArr}</div>
+        <div class="note">${allNotes[i].note}</div>
+        <div class="timestamp">${allNotes[i].created}</div>
+    </div>
     `
     }
+
+    allNotesList.style.display = 'inherit'
 }
 
+displayNotes()

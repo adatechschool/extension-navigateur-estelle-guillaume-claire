@@ -19,3 +19,38 @@ body {
     bottom: 20px;
     right: 20px;
 }
+
+.listItem {
+    background-color: #e4d48390;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.listItem h2, div {
+    margin:1%;
+}
+
+.note {
+    width:98%;
+    text-align: justify;
+}
+
+.timestamp {
+    color: #00000070;
+    font-size: smaller;
+}
+
+#tags {
+    display: flex;
+    flex-direction: row;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+#tags label {
+    margin-right: 15px;
+}
+
+#tags input {
+    margin-left: 0px;
+}
