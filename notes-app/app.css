@@ -97,6 +97,7 @@ body {
     font-weight: Bold;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
+    margin-bottom: 10px;
   }
   
   #submit:hover {

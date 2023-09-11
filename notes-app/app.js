@@ -41,8 +41,8 @@ const newNote = () => {
 }
 
 // validation du formulaire
-newNoteForm.addEventListener("submit", (e) => {
-    e.preventDefault()
+newNoteForm.addEventListener("submit", (event) => {
+    event.preventDefault() // empêcher reload du js
     title = document.querySelector("#title").value
     note = document.querySelector("#note").value
 
@@ -87,7 +87,7 @@ const displayNotes = () => {
             <div class="timestamp">${allNotes[i].created}</div>
         </div>`
 
-        chrome.storage.sync.set({ "title": allNotes[i].title }).then(() => {
+        chrome.storage.sync.set({ "title": allNotes[i].title, "note": allNotes[i].note }).then(() => {
             console.log('Value is set')
           });
           
@@ -103,4 +103,3 @@ const displayNotes = () => {
 }
 
 displayNotes()
-
