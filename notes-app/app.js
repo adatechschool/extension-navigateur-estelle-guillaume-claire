@@ -37,6 +37,7 @@ const newNote = () => {
     }
 
     allNotesList.style.display = 'none' // cacher la liste des notes
+    newNoteBtn.style.display = 'none' // cacher le bouton new note
 }
 
 // validation du formulaire
@@ -60,8 +61,10 @@ newNoteForm.addEventListener("submit", (e) => {
 
     // push des infos dans le tableau des notes
     allNotes.push({ "title": title, "note": note, "created": timestamp, "tags": tags })
-    displayNotes()
+
     newNoteForm.style.display = 'none' // cacher le formulaire
+    displayNotes()
+
 })
 
 // click du bouton pour créer une nouvelle note
@@ -83,9 +86,21 @@ const displayNotes = () => {
             <div class="note">${allNotes[i].note}</div>
             <div class="timestamp">${allNotes[i].created}</div>
         </div>`
+
+        chrome.storage.sync.set({ "title": allNotes[i].title }).then(() => {
+            console.log('Value is set')
+          });
+          
     }
 
     allNotesList.style.display = 'inherit'
+    newNoteBtn.style.display = 'inherit'
+
+    chrome.storage.sync.get(["title"]).then((result) => {
+        console.log("Value currently is " + result.title)
+      }); 
+
 }
 
 displayNotes()
+
