@@ -1,3 +1,5 @@
+
+// tableau des notes
 const allNotes = [
     {
         "title": "coucou tout le monde",
@@ -7,6 +9,7 @@ const allNotes = [
     }
 ]
 
+// variables (utilisées dans les fonctions ensuite)
 const newNoteForm = document.querySelector("#newNoteForm")
 newNoteForm.style.display = 'none'
 
@@ -21,8 +24,10 @@ let newNoteBtn = document.querySelector(".newNoteBtn")
 const dayOfYear = date =>
     Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
 
+
+// fonction pour créer une nouvelle note
 const newNote = () => {
-    newNoteForm.style.display = 'flex'
+    newNoteForm.style.display = 'flex' // affichage du formulaire
     document.querySelector("#title").value = ''
     document.querySelector("#note").value = ''
     tags = []
@@ -31,10 +36,10 @@ const newNote = () => {
         tag.checked = false
     }
 
-    allNotesList.style.display = 'none'
-    // newNoteBtn.style.display = 'none'
+    allNotesList.style.display = 'none' // cacher la liste des notes
 }
 
+// validation du formulaire
 newNoteForm.addEventListener("submit", (e) => {
     e.preventDefault()
     title = document.querySelector("#title").value
@@ -53,14 +58,16 @@ newNoteForm.addEventListener("submit", (e) => {
         timestamp = timestamp.toLocaleDateString()
     }
 
+    // push des infos dans le tableau des notes
     allNotes.push({ "title": title, "note": note, "created": timestamp, "tags": tags })
     displayNotes()
-    newNoteForm.style.display = 'none'
-    // newNoteBtn.style.display = 'inherit'
+    newNoteForm.style.display = 'none' // cacher le formulaire
 })
 
+// click du bouton pour créer une nouvelle note
 newNoteBtn.addEventListener("click", newNote)
 
+// affichage de la liste de notes (avec une boucle)
 const displayNotes = () => {
     document.querySelector('#allNotes').innerHTML = ''
     for (let i = 0; i < allNotes.length; i++) {
