@@ -1,30 +1,42 @@
 body {
-    width: 600px;
+    width: 400px;
     height: 300px;
     background-color: #fff1aa;
     bottom: 0;
+    font-family:Arial, Helvetica, sans-serif;
+
 }
 
 #newNoteForm {
     margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
 }
 
 .newNoteBtn {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #e4d483;
+    background-color:white;
     font-size: 2em;
     position: fixed;
     bottom: 20px;
     right: 20px;
+    border: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .listItem {
-    background-color: #e4d48390;
+    background-color: white;
     padding: 10px;
     margin-bottom: 10px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
+
+
 
 .listItem h2, div {
     margin:1%;
@@ -47,10 +59,88 @@ body {
     padding-left: 0px;
 }
 
-#tags label {
+.tagLabel {
     margin-right: 15px;
+    font-size: small;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:3px;
 }
 
 #tags input {
     margin-left: 0px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    margin:0px;
+}
+
+.archiveNote {
+    margin:0px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.icon {
+    fill: black
+}
+
+#submit {
+    width: 200px;
+    padding: 12.5px 30px;
+    border: 0;
+    background-color: #fb8f2b;
+    color: #ffffff;
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+  }
+  
+  #submit:hover {
+    background-color: #fb8f2b;
+    box-shadow: 0 0 20px #ffb56f50;
+    transform: scale(1.1);
+  }
+  
+  #submit:active {
+    background-color: #fb8f2b;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98);
+  }
+
+
+#title {
+    width:50%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+#title:focus, #note:focus {
+    border: 3px solid red;
+}
+
+#note {
+    width:80%;
+    height:200px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: none;
+    padding: 5px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.tagDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

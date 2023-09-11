@@ -16,12 +16,13 @@ let title = document.querySelector("#title").value
 let note = document.querySelector("#note").value
 let tags = []
 let checkedTags = document.querySelectorAll(".tag")
+let newNoteBtn = document.querySelector(".newNoteBtn")
 
 const dayOfYear = date =>
-  Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+    Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
 
 const newNote = () => {
-    newNoteForm.style.display = 'inherit'
+    newNoteForm.style.display = 'flex'
     document.querySelector("#title").value = ''
     document.querySelector("#note").value = ''
     tags = []
@@ -31,6 +32,7 @@ const newNote = () => {
     }
 
     allNotesList.style.display = 'none'
+    // newNoteBtn.style.display = 'none'
 }
 
 newNoteForm.addEventListener("submit", (e) => {
@@ -45,37 +47,35 @@ newNoteForm.addEventListener("submit", (e) => {
     }
 
     let timestamp = new Date()
-        if (dayOfYear(timestamp) == dayOfYear(new Date())) {
-            timestamp = "Today " + timestamp.toLocaleTimeString()
-        } else {
-            timestamp = timestamp.toLocaleDateString()
-        }
+    if (dayOfYear(timestamp) == dayOfYear(new Date())) {
+        timestamp = "Today " + timestamp.toLocaleTimeString()
+    } else {
+        timestamp = timestamp.toLocaleDateString()
+    }
 
     allNotes.push({ "title": title, "note": note, "created": timestamp, "tags": tags })
     displayNotes()
     newNoteForm.style.display = 'none'
+    // newNoteBtn.style.display = 'inherit'
 })
 
-const newNoteBtn = document.querySelector(".newNoteBtn")
 newNoteBtn.addEventListener("click", newNote)
 
 const displayNotes = () => {
-    allNotesList.innerHTML = ''
-
+    document.querySelector('#allNotes').innerHTML = ''
     for (let i = 0; i < allNotes.length; i++) {
         const tagsArr = []
-        for (let j = 0 ; j < allNotes[i].tags.length ; j++) {
+        for (let j = 0; j < allNotes[i].tags.length; j++) {
             tagsArr.push(allNotes[i].tags[j])
         }
 
-        allNotesList.innerHTML += `
-    <div class="listItem">
-        <h2>${allNotes[i].title}</h2>
-        <div class="tagsList">${tagsArr}</div>
-        <div class="note">${allNotes[i].note}</div>
-        <div class="timestamp">${allNotes[i].created}</div>
-    </div>
-    `
+        document.querySelector('#allNotes').innerHTML += `
+        <div class="listItem">
+            <h2 class="title">${allNotes[i].title}</h2>
+            <div class="tagsList">${tagsArr}</div>
+            <div class="note">${allNotes[i].note}</div>
+            <div class="timestamp">${allNotes[i].created}</div>
+        </div>`
     }
 
     allNotesList.style.display = 'inherit'
