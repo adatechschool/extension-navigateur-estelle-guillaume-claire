@@ -81,7 +81,7 @@ const displayNotes = () => {
         <div class="listItem" id="tag${tagsArr}">
             <h2 class="title">${allNotes[i].title}</h2>
             <div class="tagsList">${tagsArr}</div>
-            <div class="note">${allNotes[i].note}</div>
+            <div class="note">${allNotes[i].note.slice(0,150) + '...'}</div>
             <div class="timestamp">${allNotes[i].created}</div>
         </div>`
 
