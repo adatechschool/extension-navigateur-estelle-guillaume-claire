@@ -50,7 +50,7 @@ body {
     font-size: smaller;
 }
 
-#tags {
+.tags {
     display: flex;
     flex-direction: row;
     margin-left: 0px;
