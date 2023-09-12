@@ -150,15 +150,8 @@ div {
     align-items: center;
 }
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-#tagHome {
-    background-color: #6A4C93;
-=======
 #tagHome {
     background-color:#6A4C93 ; 
->>>>>>> b29a89c8669d2b17ea53551055789aa73fc0000e
     color: white;
 }
 
@@ -175,21 +168,13 @@ div {
 }
 
 #tagSchool {
-<<<<<<< HEAD
     background-color: #FFCA3A
-=======
-    background-color:#FFCA3A 
->>>>>>> b29a89c8669d2b17ea53551055789aa73fc0000e
 }
 
 #tagPersonal {
     background-color: #FF595E;
 }
 
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> b29a89c8669d2b17ea53551055789aa73fc0000e
 #noNotes {
     width: 100%;
 }
