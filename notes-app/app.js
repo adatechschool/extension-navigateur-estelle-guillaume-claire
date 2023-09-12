@@ -9,12 +9,12 @@ const allNotes = [
     }
 ]
 
-// variables (utilisées dans les fonctions ensuite)
+// masquer le formulaire à l'initialisation du js
 const newNoteForm = document.querySelector("#newNoteForm")
 newNoteForm.style.display = 'none'
 
+// variables (utilisées dans les fonctions ensuite)
 const allNotesList = document.querySelector("#allNotes")
-
 let title = document.querySelector("#title").value
 let note = document.querySelector("#note").value
 let tags = []
@@ -23,7 +23,6 @@ let newNoteBtn = document.querySelector(".newNoteBtn")
 
 const dayOfYear = date =>
     Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
-
 
 // fonction pour créer une nouvelle note
 const newNote = () => {
@@ -64,7 +63,6 @@ newNoteForm.addEventListener("submit", (event) => {
 
     newNoteForm.style.display = 'none' // cacher le formulaire
     displayNotes()
-
 })
 
 // click du bouton pour créer une nouvelle note
