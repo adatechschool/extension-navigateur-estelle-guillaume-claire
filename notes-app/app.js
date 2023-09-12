@@ -1,13 +1,4 @@
-
-// tableau des notes
-const allNotes = [
-    {
-        "title": "coucou tout le monde",
-        "note": "we are the best group ever ! <3",
-        "created": "Today",
-        "tags": ["Home"]
-    }
-]
+// localStorage.clear()
 
 // masquer le formulaire à l'initialisation du js
 const newNoteForm = document.querySelector("#newNoteForm")
@@ -15,6 +6,7 @@ newNoteForm.style.display = 'none'
 
 // variables (utilisées dans les fonctions ensuite)
 const allNotesList = document.querySelector("#allNotes")
+const noNotes = document.querySelector("#noNotes")
 let title = document.querySelector("#title").value
 let note = document.querySelector("#note").value
 let tags = []
@@ -23,6 +15,16 @@ let newNoteBtn = document.querySelector(".newNoteBtn")
 
 const dayOfYear = date =>
     Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+
+// tableau des notes 
+let allNotes = []
+if (localStorage.getItem('allNotes')) {
+    allNotesList.innerHTML = ''
+    allNotes = JSON.parse(localStorage.getItem('allNotes'))
+} 
+if (allNotes.length == 0) {
+    noNotes.innerHTML += "<p> no notes yet </p>"
+}
 
 // fonction pour créer une nouvelle note
 const newNote = () => {
@@ -37,6 +39,7 @@ const newNote = () => {
 
     allNotesList.style.display = 'none' // cacher la liste des notes
     newNoteBtn.style.display = 'none' // cacher le bouton new note
+    noNotes.style.display = 'none' // cacher "no notes yet"
 }
 
 // validation du formulaire
@@ -84,20 +87,12 @@ const displayNotes = () => {
             <div class="note">${allNotes[i].note.slice(0,150) + '...'}</div>
             <div class="timestamp">${allNotes[i].created}</div>
         </div>`
-
-        chrome.storage.sync.set({ "title": allNotes[i].title, "note": allNotes[i].note }).then(() => {
-            console.log('Value is set')
-          });
-          
     }
 
     allNotesList.style.display = 'inherit'
     newNoteBtn.style.display = 'inherit'
 
-    chrome.storage.sync.get(["title"]).then((result) => {
-        console.log("Value currently is " + result.title)
-      }); 
-
+    localStorage.setItem('allNotes', JSON.stringify(allNotes))
 }
 
 displayNotes()
