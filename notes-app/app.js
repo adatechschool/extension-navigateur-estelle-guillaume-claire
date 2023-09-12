@@ -5,7 +5,7 @@ const allNotes = [
         "title": "coucou tout le monde",
         "note": "we are the best group ever ! <3",
         "created": "Today",
-        "tags": ["Personal"]
+        "tags": ["Home"]
     }
 ]
 
@@ -78,7 +78,7 @@ const displayNotes = () => {
         }
 
         document.querySelector('#allNotes').innerHTML += `
-        <div class="listItem">
+        <div class="listItem" id="tag${tagsArr}">
             <h2 class="title">${allNotes[i].title}</h2>
             <div class="tagsList">${tagsArr}</div>
             <div class="note">${allNotes[i].note}</div>
