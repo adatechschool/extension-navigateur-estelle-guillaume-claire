@@ -29,7 +29,24 @@
             <div class="tagDiv"><input type="checkbox" id="tag6" class="tag" value="Other">
             <div class="tagLabel">Other</label></div></div>
          </div><br>
-        <textarea id="note" placeholder="Enter note"></textarea><br><br>
+        <div>
+            <label><input type="checkbox" id="checkboxReminder" name="checkboxReminder">Set reminder in <select name="reminder" id="reminder">
+                <option value="0">Please choose a time</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="30">30</option>
+                <option value="35">35</option>
+                <option value="40">40</option>
+                <option value="45">45</option>
+                <option value="50">50</option>
+                <option value="55">55</option>
+                <option value="60">60</option>
+            </select> minutes.</label>
+        </div>
+         <textarea id="note" placeholder="Enter note"></textarea><br><br>
         <input type="submit" id="submit" value="Submit">
     </form>
 
