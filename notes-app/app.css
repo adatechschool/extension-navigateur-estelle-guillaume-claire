@@ -148,6 +148,7 @@ div {
     display: flex;
     flex-direction: row;
     align-items: center;
+    
 }
 
 .tagHome {
@@ -195,4 +196,12 @@ div {
 .headerNote button {
     border: none;
     background-color: #00000000;
+}
+
+.seeMore {
+    background-color: #fff1aa;
+    color: black;
+    font-weight: bold;
+    border-radius: 6px;
+    box-shadow: 4px 4px 7px black;
 }
