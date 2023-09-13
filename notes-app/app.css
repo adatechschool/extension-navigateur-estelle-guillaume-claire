@@ -150,28 +150,28 @@ div {
     align-items: center;
 }
 
-#tagHome {
+.tagHome {
     background-color:#6A4C93 ; 
     color: white;
 }
 
-#tagEntertainment {
+.tagEntertainment {
     background-color: #1AC8ED
 }
 
-#tagOther {
+.tagOther {
     background-color: #1982C4
 }
 
-#tagWork {
+.tagWork {
     background-color: #8AC926
 }
 
-#tagSchool {
+.tagSchool {
     background-color: #FFCA3A
 }
 
-#tagPersonal {
+.tagPersonal {
     background-color: #FF595E;
 }
 
