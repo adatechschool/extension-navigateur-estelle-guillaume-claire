@@ -42,6 +42,7 @@ const newNote = () => {
     allNotesList.style.display = 'none' // cacher la liste des notes
     newNoteBtn.style.display = 'none' // cacher le bouton new note
     noNotes.style.display = 'none' // cacher "no notes yet"
+    isBoxChecked();
 }
 
 // validation du formulaire
@@ -116,3 +117,15 @@ for (let i = 0 ; i < allNotes.length ; i++) {
 }
     })
 }
+
+const isBoxChecked = () => {
+    let isChecked = document.getElementById("checkboxReminder").checked;
+    if (isChecked == true)
+        console.log("The box is checked");
+        console.log(document.getElementById("reminder").value);
+        //return isChecked;
+    //console.log(isChecked);
+    return isChecked;
+}
+
+//isBoxChecked()
