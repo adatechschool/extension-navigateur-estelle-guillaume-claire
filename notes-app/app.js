@@ -57,14 +57,8 @@ newNoteForm.addEventListener("submit", (event) => {
     }
 
     let timestamp = new Date()
-    if (dayOfYear(timestamp) == dayOfYear(new Date())) {
-        timestamp = "Today " + timestamp.toLocaleTimeString()
-    } else if (dayOfYear(timestamp) == dayOfYear(new Date())-1) {
-        timestamp = "Yesterday " + timestamp.toLocaleTimeString()
-    }
-    else {
-        timestamp = timestamp.toLocaleDateString()
-    }
+    timestamp = timestamp.toLocaleDateString()
+    
 
     // push des infos dans le tableau des notes
     allNotes.push({ "title": title, "note": note, "created": timestamp, "tags": tags })
